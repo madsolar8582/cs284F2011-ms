@@ -1,0 +1,10 @@
+#!/bin/bash
+
+clear
+echo -e "\033[33m > Now compiling your program...\033[0m"
+clang++ -O3 -Wall -W -pedantic-errors *.cpp -o mem
+if [ -f mem ]; then
+  echo -e "\033[32m > Program compilation was successful.\033[0m"
+else
+  echo -e "\033[31m > Program compilation was not successful.\033[0m"
+fi
