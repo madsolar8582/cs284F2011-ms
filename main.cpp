@@ -19,7 +19,7 @@ int main(int argc, char *argv[])
   
   const int MAX_SIZE = 10; //Number of programs determined by the assignment
   const int memSize = 512; //Size of Memory
-  long int pageSize = strtol(argv[3],NULL,10); //Pagesize determined by the user
+  long int pageSize = strtol(argv[3],NULL,10); //Page size determined by the user
   string programListFile = argv[1]; //List File determined by the user
   string programTraceFile = argv[2]; //Trace file determined by the user
   string pageAlgorithm = argv[4]; //Replacement algorithm determined by the user
@@ -77,7 +77,7 @@ int main(int argc, char *argv[])
     }
     for(int i = 0; i < MAX_SIZE; i++)
     {
-      for(int j = 0; j < (memAllocated / MAX_SIZE); j++)
+      for(int j = 0; j < static_cast<int>(floor(static_cast<double>(memAllocated) / static_cast<double>(MAX_SIZE))); j++) //floor
       {
         systemMemory.push_back(systemPageTable[i][j]); //initialize the clock bit tracker
       }
@@ -91,7 +91,7 @@ int main(int argc, char *argv[])
     }
     for(int i = 0; i < MAX_SIZE; i++)
     {
-      for(int j = 0; j < (memAllocated / MAX_SIZE); j++)
+      for(int j = 0; j < static_cast<int>(floor(static_cast<double>(memAllocated) / static_cast<double>(MAX_SIZE))); j++) //floor
       {
         systemMemory.push_back(systemPageTable[i][j]); //initial load of memory
       }
@@ -150,8 +150,7 @@ int main(int argc, char *argv[])
             timeTracker[oldPage] = tracker;
             if(pageStyle == "p")
             {
-              pageLocation++;
-              oldPage++;
+              pageLocation++; oldPage++;
               if(oldPage == static_cast<int>(systemMemory.size()))
               {
                 oldPage = 0;
@@ -226,8 +225,7 @@ int main(int argc, char *argv[])
             timeTracker[oldPage] = tracker;
             if(pageStyle == "p")
             {
-              pageLocation++;
-              oldPage++;
+              pageLocation++; oldPage++;
               if(oldPage == static_cast<int>(systemMemory.size()))
               {
                 oldPage = 0;
@@ -301,8 +299,7 @@ int main(int argc, char *argv[])
             timeTracker[clockTracker] = 1;
             if(pageStyle == "p")
             {
-              pageLocation++;
-              clockTracker++;
+              pageLocation++; clockTracker++;
               if(clockTracker == static_cast<int>(systemMemory.size()))
               {
                 clockTracker = 0;
