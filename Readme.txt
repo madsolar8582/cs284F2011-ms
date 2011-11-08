@@ -13,3 +13,6 @@ Machine: rc07xcs213.managed.mst.edu
 Instructions for Using the Program
 
 ./memorysimulator programlistfile programtracefile pagesize algorithm style
+
+License
+Licensed under the Academic Free License version 3.0
